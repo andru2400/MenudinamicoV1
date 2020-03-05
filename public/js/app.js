@@ -39755,7 +39755,7 @@ var staticRenderFns = [
         _vm._v(" Lock Account")
       ]),
       _vm._v(" "),
-      _c("a", { staticClass: "dropdown-item", attrs: { href: "logout" } }, [
+      _c("a", { staticClass: "dropdown-item", attrs: { href: "/logout" } }, [
         _c("i", { staticClass: "fa fa-lock" }),
         _vm._v(" Logout")
       ])
