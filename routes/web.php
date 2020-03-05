@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('dashboard/home', function () {
 //     return view('back.layout.home.home');
@@ -23,7 +23,7 @@
 //     return view('back.layout.home.home');
 // });
 
-Route::get('/{any}', 'pagesController@spa')->where('any', '.*');
+Route::get('dashboard/{any}', 'pagesController@spa')->where('any', '.*');
 
 Auth::routes();
 
