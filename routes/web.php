@@ -23,8 +23,9 @@ Route::get('/', function () {
 //     return view('back.layout.home.home');
 // });
 
-Route::get('dashboard/{any}', 'pagesController@spa')->where('any', '.*');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
+Route::get('/{any}', 'pagesController@spa')->where('any', '.*');
 
 // Route::get('/home', 'HomeController@index')->name('home');
