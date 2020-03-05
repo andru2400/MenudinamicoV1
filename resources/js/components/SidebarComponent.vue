@@ -3,7 +3,7 @@
         <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-item">
-            <router-link to="/home" class="nav-link">
+            <router-link to="/dashboard/home" class="nav-link">
                 <i class="nav-icon icon-speedometer"></i> Bienvenida
                 <span class="badge badge-primary">NEW</span>
             </router-link>
@@ -14,7 +14,7 @@
             </li>
             <li class="nav-title">Administración</li>
             <li class="nav-item">
-            <router-link to="/news" class="nav-link">
+            <router-link to="/dashboard/news" class="nav-link">
                 <i class="nav-icon icon-layers"></i> Noticias
             </router-link>
                 <!-- <a class="nav-link" href="">
@@ -23,21 +23,21 @@
             </li>
             <li class="nav-title">Configuración</li>            
             <li class="nav-item">
-                <router-link to="/users" class="nav-link">
+                <router-link to="/dashboard/users" class="nav-link">
                     <i class="nav-icon icon-pencil"></i>Usuarios
                 </router-link>
                 <!-- <a class="nav-link" href="">
                     <i class="nav-icon icon-pencil"></i>Usuarios</a> -->
             </li>
             <li class="nav-item">
-                <router-link to="/roles" class="nav-link">
+                <router-link to="/dashboard/roles" class="nav-link">
                     <i class="nav-icon icon-pencil"></i>Roles (Cargos)
                 </router-link>
                 <!-- <a class="nav-link" href="">
                 <i class="nav-icon icon-pencil"></i>Roles (Cargos)</a> -->
             </li>
             <li class="nav-item">
-                <router-link to="/groups-parameters" class="nav-link">
+                <router-link to="/dashboard/groups-parameters" class="nav-link">
                     <i class="nav-icon icon-pencil"></i>Grupos - Parametros
                 </router-link>
                 <!-- <a class="nav-link" href="">

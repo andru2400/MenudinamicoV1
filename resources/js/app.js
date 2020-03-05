@@ -20,27 +20,27 @@ const router = new VueRouter({
     mode:'history',
     routes:[
         {
-            path: '/home',
+            path: '/dashboard/home',
             name: 'homeIndex',
             component: HomeComponent
         },
         {
-            path: '/news',
+            path: '/dashboard/news',
             name: 'newsIndex',
             component: NewsComponent
         },        
         {
-            path: '/users',
+            path: '/dashboard/users',
             name: 'newsIndex',
             component: UsersComponent
         },
         {
-            path: '/roles',
+            path: '/dashboard/roles',
             name: 'newsIndex',
             component: RolesComponent
         },
         {
-            path: '/groups-parameters',
+            path: '/dashboard/groups-parameters',
             name: 'newsIndex',
             component: GroupsComponent
         }

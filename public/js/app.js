@@ -39818,7 +39818,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/home" } },
+              { staticClass: "nav-link", attrs: { to: "/dashboard/home" } },
               [
                 _c("i", { staticClass: "nav-icon icon-speedometer" }),
                 _vm._v(" Bienvenida\n            "),
@@ -39839,7 +39839,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/news" } },
+              { staticClass: "nav-link", attrs: { to: "/dashboard/news" } },
               [
                 _c("i", { staticClass: "nav-icon icon-layers" }),
                 _vm._v(" Noticias\n        ")
@@ -39857,7 +39857,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/users" } },
+              { staticClass: "nav-link", attrs: { to: "/dashboard/users" } },
               [
                 _c("i", { staticClass: "nav-icon icon-pencil" }),
                 _vm._v("Usuarios\n            ")
@@ -39873,7 +39873,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/roles" } },
+              { staticClass: "nav-link", attrs: { to: "/dashboard/roles" } },
               [
                 _c("i", { staticClass: "nav-icon icon-pencil" }),
                 _vm._v("Roles (Cargos)\n            ")
@@ -39889,7 +39889,10 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/groups-parameters" } },
+              {
+                staticClass: "nav-link",
+                attrs: { to: "/dashboard/groups-parameters" }
+              },
               [
                 _c("i", { staticClass: "nav-icon icon-pencil" }),
                 _vm._v("Grupos - Parametros\n            ")
@@ -57052,23 +57055,23 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
   routes: [{
-    path: '/home',
+    path: '/dashboard/home',
     name: 'homeIndex',
     component: _components_views_HomeComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }, {
-    path: '/news',
+    path: '/dashboard/news',
     name: 'newsIndex',
     component: _components_views_NewsComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/users',
+    path: '/dashboard/users',
     name: 'newsIndex',
     component: _components_views_UsersComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/roles',
+    path: '/dashboard/roles',
     name: 'newsIndex',
     component: _components_views_RolesComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/groups-parameters',
+    path: '/dashboard/groups-parameters',
     name: 'newsIndex',
     component: _components_views_GroupsComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
