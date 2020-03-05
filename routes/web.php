@@ -26,6 +26,6 @@ Route::get('/', function () {
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
-Route::get('/{any}', 'pagesController@spa')->where('any', '.*');
+Route::get('/{any}', 'pagesController@spa')->where('any', '.*')->middleware('auth');
 
 // Route::get('/home', 'HomeController@index')->name('home');

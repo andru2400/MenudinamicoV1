@@ -21,14 +21,7 @@
                     <i class="nav-icon icon-layers"></i> Noticias
                 </a> -->
             </li>
-            <li class="nav-title">Configuración</li>
-            <li class="nav-item">
-                <router-link to="/news-types" class="nav-link">
-                    <i class="nav-icon icon-drop"></i> Tipó de Noticias
-                </router-link>
-                <!-- <a class="nav-link" href="">
-                    <i class="nav-icon icon-drop"></i>Tipó de Noticias</a> -->
-            </li>
+            <li class="nav-title">Configuración</li>            
             <li class="nav-item">
                 <router-link to="/users" class="nav-link">
                     <i class="nav-icon icon-pencil"></i>Usuarios
