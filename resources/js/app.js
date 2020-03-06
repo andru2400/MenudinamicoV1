@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 
 import HomeComponent from './components/views/HomeComponent.vue';
 import NewsComponent from './components/views/NewsComponent.vue';
+import ModulesMenuComponent from './components/views/ModulesMenuComponent.vue';
 import UsersComponent from './components/views/UsersComponent.vue';
 import RolesComponent from './components/views/RolesComponent.vue';
 import GroupsComponent from './components/views/GroupsComponent.vue';
@@ -31,17 +32,22 @@ const router = new VueRouter({
         },        
         {
             path: '/dashboard/users',
-            name: 'newsIndex',
+            name: 'users',
             component: UsersComponent
         },
         {
+            path: '/dashboard/modules-menu',
+            name: 'modulesMenu',
+            component: ModulesMenuComponent
+        },
+        {
             path: '/dashboard/roles',
-            name: 'newsIndex',
+            name: 'roles',
             component: RolesComponent
         },
         {
             path: '/dashboard/groups-parameters',
-            name: 'newsIndex',
+            name: 'groupParameters',
             component: GroupsComponent
         }
     ]
