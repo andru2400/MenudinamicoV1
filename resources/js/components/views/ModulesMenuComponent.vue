@@ -60,6 +60,8 @@
                           <div class="d-inline-block">
                             <i class="icon-note icons border p-2" @click="editElement(item)"></i>
                             <i class="icon-trash icons border p-2" @click="destroyElement(item.id)"></i>
+                            <i class="icon-arrow-up-circle" @click="upLevel(item.id)"></i>
+                            <i class="icon-arrow-down-circle" @click="downLevel(item.id)"></i>
                           </div>
                           <span v-text="item.name"></span>
                         </li>                          
@@ -73,6 +75,8 @@
                                 <div class="d-inline-block text-dark">
                                   <i class="icon-note icons border p-2" @click="editElement(item2)"></i>
                                   <i class="icon-trash icons border p-2" @click="destroyElement(item2.id)"></i>
+                                  <i class="icon-arrow-up-circle" @click="upLevel(item2.id)"></i>
+                                  <i class="icon-arrow-down-circle" @click="downLevel(item2.id)"></i>
                                 </div>
                                 <span v-text="'  '+item2.name"></span>
                                 <i :class="item2.class_icon"></i>
@@ -82,6 +86,8 @@
                                       <div class="d-inline-block text-dark">
                                         <i class="icon-note icons border p-2" @click="editElement(item3)"></i>
                                         <i class="icon-trash icons border p-2" @click="destroyElement(item3.id)"></i>
+                                        <i class="icon-arrow-up-circle" @click="upLevel(item3.id)"></i>
+                                        <i class="icon-arrow-down-circle" @click="downLevel(item3.id)"></i>
                                       </div>
                                       <router-link :to="item2.url" class="nav-link d-inline-block">                                          
                                           <span v-text="item3.name"></span>
@@ -94,6 +100,8 @@
                             <div class="d-inline-block text-dark">
                               <i class="icon-note icons border p-2" @click="editElement(item2)"></i>
                               <i class="icon-trash icons border p-2" @click="destroyElement(item2.id)"></i>
+                              <i class="icon-arrow-up-circle" @click="upLevel(item2.id)"></i>
+                              <i class="icon-arrow-down-circle" @click="downLevel(item2.id)"></i>
                             </div>
                             <router-link :to="item2.url" class="nav-link d-inline-block">
                                 <i :class="item2.class_icon"></i>
@@ -313,6 +321,9 @@ export default {
               $('#createElement').modal('hide');                            
               this.getList();
               this.getParameters();
+              toastr.success(response.data.message, 'Message')
+          }else{
+            toastr.error(response.data.message, 'Error')
           }
         }).catch(error => {
             console.error("Error al procesar")
@@ -331,27 +342,72 @@ export default {
               $('#editElement').modal('hide');                            
               this.getList();
               this.getParameters();
+              toastr.success(response.data.message, 'Message')
+          }else{
+            toastr.error(response.data.message, 'Error')
           }
         }).catch(error => {
             console.error("Error al procesar")
         });	      
     },
-    destroyElement($id){
-
+    destroyElement(id){
       let message = '¿Seguro desea eliminar?'
 			if(confirm(message)){				
-				var service_url= '/api/v1/dashboard/modules-menu/delete/'+$id;
+				var service_url= '/api/v1/dashboard/modules-menu/delete/'+id;
         axios.delete(service_url)
           .then(response => {
               if(response.data.status == 'OK'){
                 this.getList();
                 this.getParameters();
-              }
+                toastr.success(response.data.message, 'Message')
+              }else{
+                toastr.error(response.data.message, 'Error')
+              }              
           }).catch(error => {
               console.error("Error al procesar")
           });	
 			}
-		},
+    },
+    upLevel(id){
+      let formData = this._jsonToForm({'id':id});
+      let service_url = '/api/v1/dashboard/modules-menu/order-up';
+      axios.post(service_url
+      	        ,formData
+						    ,{headers: {'Content-Type': 'multipart/form-data'}}
+                )
+        .then(response => {
+          if(response.data.status == 'OK'){
+              this.element = this.elementInitialState();                          
+              this.getList();
+              this.getParameters();
+              toastr.success(response.data.message, 'Message')
+          }else{
+            toastr.error(response.data.message, 'Error')
+          }
+        }).catch(error => {
+            console.error("Error al procesar")
+        });	      
+    },    
+    downLevel(id){
+      let formData = this._jsonToForm({'id':id});
+      let service_url = '/api/v1/dashboard/modules-menu/order-down';
+      axios.post(service_url
+      	        ,formData
+						    ,{headers: {'Content-Type': 'multipart/form-data'}}
+                )
+        .then(response => {
+          if(response.data.status == 'OK'){
+              this.element = this.elementInitialState();                          
+              this.getList();
+              this.getParameters();
+              toastr.success(response.data.message, 'Message')
+          }else{
+            toastr.error(response.data.message, 'Error')
+          }
+        }).catch(error => {
+            console.error("Error al procesar")
+        });	      
+    }
     // checkOrder(){
     //   const temp = this.parameters.modules_disorder;      
     //   let x = temp.filter(element => element.parent_id == this.element.parent_id );
@@ -379,6 +435,14 @@ export default {
 
   html:not([dir="rtl"]) .sidebar {
     margin-left: auto !important;
+  }
+
+  .icon-arrow-up-circle{
+    color:green;
+  }
+
+  .icon-arrow-down-circle{    
+    color:red;
   }
 
 </style>

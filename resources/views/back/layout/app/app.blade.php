@@ -26,6 +26,9 @@
     <!-- Main styles for this application-->
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
+    <!-- Toastr -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -69,6 +72,7 @@
     <script src="{{ asset('admin/modules_coreui/@coreui/coreui/dist/js/coreui.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- @yield('additional_script') --}}
+    <script src="{{ asset('js/app.js') }}"></script>
   </body>
 
 </html>

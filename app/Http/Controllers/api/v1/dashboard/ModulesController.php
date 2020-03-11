@@ -157,4 +157,69 @@ class ModulesController extends Controller
             ,'status' => 'ERROR'            
         ]);
     }
+
+    public function order_up(Request $request){        
+        $module = Module::find($request->id);
+        if($module){
+            $modules = Module::where('parent_id',$module->parent_id)->orderBy('order','ASC')->get();
+            $array_reverse = array_reverse($modules->toArray());            
+            for ($i=0; $i < count($array_reverse) ; $i++) { 
+                if($array_reverse[$i]['id'] == $module->id){                    
+                    $capture_index = $i;                    
+                }
+            }
+            if(isset($array_reverse[$capture_index+1])){
+                $module_id_exchange = $array_reverse[$capture_index+1];
+                $module2 = Module::where('id',$module_id_exchange['id'])->first();                
+                $temp_order_module2 = $module2->order;
+                $temp_order_module  = $module->order;                 
+                $module2->order = $temp_order_module;
+                $module->order  = $temp_order_module2;
+                $module->update();
+                $module2->update();
+                return response()->json([
+                    'message' => 'Subio de posición exitosamente !'
+                    ,'status' => 'OK'            
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'Esta en el primer orden del contenedor!'
+                    ,'status' => 'ERROR'            
+                ]);
+            }
+        }
+    }
+
+    public function order_down(Request $request){
+        $module = Module::find($request->id);
+        if($module){
+            $modules = Module::where('parent_id',$module->parent_id)->orderBy('order','ASC')->get();
+            // $array_reverse = array_reverse($modules->toArray());            
+            $array_normal = $modules->toArray();            
+            for ($i=0; $i < count($array_normal) ; $i++) { 
+                if($array_normal[$i]['id'] == $module->id){                    
+                    $capture_index = $i;                    
+                }
+            }
+            if(isset($array_normal[$capture_index+1])){
+                $module_id_exchange = $array_normal[$capture_index+1];
+                $module2 = Module::where('id',$module_id_exchange['id'])->first();                
+                $temp_order_module2 = $module2->order;
+                $temp_order_module  = $module->order;                 
+                $module2->order = $temp_order_module;
+                $module->order  = $temp_order_module2;
+                $module->update();
+                $module2->update();
+                return response()->json([
+                    'message' => 'Bajo de orden exitosamente !'
+                    ,'status' => 'OK'            
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'Esta en el ultimo orden de su contenedor!'
+                    ,'status' => 'ERROR'            
+                ]);
+            }
+        }
+    }
 }

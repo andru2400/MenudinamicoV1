@@ -10,6 +10,8 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+window.toastr = require('toastr');
+
 import HomeComponent from './components/views/HomeComponent.vue';
 import NewsComponent from './components/views/NewsComponent.vue';
 import ModulesMenuComponent from './components/views/ModulesMenuComponent.vue';
