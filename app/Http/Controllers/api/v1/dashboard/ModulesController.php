@@ -21,7 +21,9 @@ class ModulesController extends Controller
 
     public function all(){
         $list = Module::where('parent_id',null)->orderBy('order','ASC')->with(['modules' => function($query){
-            $query->with('modules')->orderBy('order','ASC');
+            $query->with(['modules' => function($query2){
+                $query2->with('modules')->orderBy('order','ASC');
+            }])->orderBy('order','ASC');
         }])->get();
         
         return response()->json([
@@ -201,7 +203,7 @@ class ModulesController extends Controller
                     $capture_index = $i;                    
                 }
             }
-            if(isset($array_normal[$capture_index+1])){
+            if(isset($array_normal[$capture_index+1])){                
                 $module_id_exchange = $array_normal[$capture_index+1];
                 $module2 = Module::where('id',$module_id_exchange['id'])->first();                
                 $temp_order_module2 = $module2->order;
