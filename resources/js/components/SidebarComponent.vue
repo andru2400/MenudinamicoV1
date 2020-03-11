@@ -1,4 +1,4 @@
-<template>
+<template>    
     <div class="sidebar">
         <nav class="sidebar-nav">
         <ul class="nav">
@@ -35,20 +35,27 @@
                     <i class="nav-icon icon-pencil"></i>Grupos - Parametros
                 </router-link>                
             </li>
-            <!-- <li class="nav-item mt-auto">
-                <a class="nav-link nav-link-success" target="_top">
-                <i class="nav-icon icon-cloud-download"></i> Download CoreUI</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-link-danger" target="_top">
-                <i class="nav-icon icon-layers"></i> Try CoreUI
-                <strong>PRO</strong>
-                </a>
-            </li> -->
+            <li class="nav-item nav-dropdown" :class="tempClass" v-on:click="openClass">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Pages</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages-login.html" target="_top"><i class="icon-star"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages-register.html" target="_top"><i class="icon-star"></i> Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages-404.html" target="_top"><i class="icon-star"></i> Error 404</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages-500.html" target="_top"><i class="icon-star"></i> Error 500</a>
+                    </li>
+                </ul>
+            </li>          
         </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -59,13 +66,22 @@
         },
         data () {
             return {
-                assetHeader: this.asset
+                assetHeader: this.asset,
+                tempClass: 'close_temp',
+                list:[]
             }
         },
         created: function() {
-
+            
         },
         methods: {
+            openClass(){
+                if(this.tempClass == 'close_temp'){
+                    this.tempClass = 'open'
+                }else{
+                    this.tempClass = 'close_temp'
+                }
+            }
         }
     }
 </script>

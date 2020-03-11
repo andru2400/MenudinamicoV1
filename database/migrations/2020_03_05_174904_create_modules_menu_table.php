@@ -18,10 +18,10 @@ class CreateModulesMenuTable extends Migration
             $table->string('name', 150)->unique();
             $table->string('url', 250)->nullable();
             $table->string('class_icon', 250)->nullable();
-            $table->unsignedInteger('parent')->default(0)->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedInteger('order')->default(0)->nullable();
-            $table->enum('enabled',['activated','inactivated'])->default('activated');
-            $table->enum('class_icon_level',['1','2','3'])->default('1')->nullable();            
+            $table->enum('enabled',['activated','inactivated'])->default('activated');         
+            $table->foreign('parent_id')->references('id')->on('modules_menu');            
             $table->timestamps();
         }); 
     }
